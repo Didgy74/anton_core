@@ -1,13 +1,21 @@
 #pragma once
 
-#if defined(_WIN64)
+#if defined(_WIN64) || defined(_WIN32)
     #define ANTON_NOEXCEPT
     #define ANTON_CRT_IMPORT __declspec(dllimport)
-    #define size_t unsigned long long
+	#if defined(_WIN64)
+		#define size_t unsigned long
+    #else
+		#define size_t unsigned int
+    #endif
 #else 
     #define ANTON_NOEXCEPT
     #define ANTON_CRT_IMPORT
-    #define size_t unsigned long int
+	#if defined(__x86_64__) || defined(__aarch64__)
+        #define size_t unsigned long long
+    #else
+        #define size_t unsigned int
+    #endif
 #endif
 
 // C Runtime Forward Declarations
