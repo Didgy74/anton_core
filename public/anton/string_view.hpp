@@ -246,6 +246,7 @@ namespace anton {
     }
 } // namespace anton
 
+/*
 namespace std {
     template<typename T>
     struct hash;
@@ -257,3 +258,4 @@ namespace std {
         }
     };
 } // namespace std
+*/

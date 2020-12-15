@@ -551,7 +551,7 @@ namespace anton {
     template<typename T, typename Allocator>
     void Array<T, Allocator>::erase_unsorted(size_type index) {
         if constexpr(ANTON_ITERATOR_DEBUG) {
-            ANTON_FAIL(index <= size && index >= 0, u8"Index out of range.");
+            ANTON_FAIL(index <= this->size && index >= 0, u8"Index out of range.");
         }
 
         erase_unsorted_unchecked(index);

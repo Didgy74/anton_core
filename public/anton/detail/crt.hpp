@@ -5,7 +5,7 @@
     #define ANTON_CRT_IMPORT __declspec(dllimport)
     #define size_t unsigned long long
 #else 
-    #define ANTON_NOEXCEPT noexcept
+    #define ANTON_NOEXCEPT
     #define ANTON_CRT_IMPORT
     #define size_t unsigned long int
 #endif
@@ -59,7 +59,12 @@ extern "C" {
     #else
         #ifndef __FILE_defined
             #define __FILE_defined 1
-            typedef struct _IO_FILE FILE;
+            #if defined(__ANDROID__)
+                struct __sFILE;
+                typedef struct __sFILE FILE;
+            #elif
+                typedef struct _IO_FILE FILE;
+            #endif
         #endif
 
         extern FILE* stdin;
@@ -76,7 +81,7 @@ extern "C" {
     #if defined(_WIN64)
         #define ANTON_CRT_STDIO_NOEXCEPT
     #else
-        #define ANTON_CRT_STDIO_NOEXCEPT noexcept
+        #define ANTON_CRT_STDIO_NOEXCEPT
     #endif
 
     ANTON_CRT_IMPORT FILE* fopen(char const* filename, char const* modes);

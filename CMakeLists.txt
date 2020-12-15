@@ -12,7 +12,7 @@ option(ANTON_UNREACHABLE_ASSERTS "ANTON_UNREACHABLE will use assert instead of a
 # Add anton_math
 FetchContent_Declare(
     anton_math
-    GIT_REPOSITORY https://github.com/kociap/anton_math.git
+    GIT_REPOSITORY https://github.com/Didgy74/anton_math
 )
 FetchContent_MakeAvailable(anton_math)
 
